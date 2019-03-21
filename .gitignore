@@ -1,0 +1,26 @@
+#Exlcude node modules folder
+node_modules/
+
+#Exlcude sessions folder
+sessions/
+
+#ignore files and folders recursively:
+/CADMaster/**
+
+#Then exclude folders from the ignore rules:
+!/CADMaster/**/
+
+#Before whitelisting files like the .gitkeep
+!/CADMaster/**/.gitkeep
+
+# exclude everything
+saved_elevation/*
+
+# exception to the rule
+!saved_elevation/.gitkeep
+
+# exclude inventor lockfile
+*lockfile.lck
+
+# exclude inventor OldVersion folder
+*OldVersions/
