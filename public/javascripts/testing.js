@@ -1,3 +1,5 @@
+
+
 var arr=[0,-1,2,3,1]
 
 //filter
@@ -27,7 +29,7 @@ var person={
         [this.FN,this.LN]=value.split(' ');
     }
 };
-
+//DUE TO SET I CAN CHANGE PERSON.NAME
 person.fullname='Dinesh Vetal';
 //console.log(person);
 
@@ -102,3 +104,69 @@ const cad=new Circle();
 cad.location.x=2;
 cad['location']['y']=2;
 
+//FIZZBUZZ ALGORITHM
+function fizzbuzz(number){
+    //bad line
+    if(number==null || typeof number =="boolean" || typeof number=="string") return "NAN";
+    //good line
+    if(typeof number !== "number") return "NAN";
+    if(number%3==0 && number%5==0) return "Fizzbuzz";
+    if(number%3==0) return "Fizz";
+    if(number%5==0) return "buzz";
+
+    else return number;
+}
+// console.table(fizzbuzz(3));
+// console.table(fizzbuzz(5));
+// console.table(fizzbuzz(15));
+// console.table(fizzbuzz(8));
+// console.table(fizzbuzz("gug"));
+
+//SPEED LIMIT PROBLEM
+function speedlimit(speed){
+    if(typeof speed!== "number" || speed<0) {
+        return "Enter Valid speed"
+    }
+    if(speed>(74)){
+    speednumber=speed-70;
+    let number= Math.floor(speednumber/5);
+    if(number<12){
+    return `Point: ${number}`
+    } else{return "license suspended"}
+    }
+    else return "ok";
+}
+// console.log(speedlimit(75));
+// console.log(speedlimit(180));
+// console.log(speedlimit(-80));
+// console.log(speedlimit(134));
+
+
+function showNumbers(number) {
+    if(typeof number!== "number" || number<0) {
+        return "Enter Valid number"
+    }
+    for(i=0;i<=number;i++){
+        if(i %2 ===0) {
+             console.log(`${i} Even`)
+        }
+        if(i %2 !==0) {
+             console.log(`${i} Odd`)
+        }
+    }
+}
+//console.log(showNumbers(13));
+
+
+//count truthy values
+function counttruthy(array){
+    // var count=0;
+    
+    array.filter(item=>{
+        
+        return item==='true'
+    })
+    return array
+}
+let asd=[1,2,0,'',3,4]
+console.log(counttruthy(asd));
