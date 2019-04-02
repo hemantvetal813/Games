@@ -160,13 +160,54 @@ function showNumbers(number) {
 
 //count truthy values
 function counttruthy(array){
-    // var count=0;
+    // filter doesnt change the main array.
     
-    array.filter(item=>{
-        
-        return item==='true'
+    let arr1=array.filter(item =>{
+        if(item){return item}
     })
-    return array
+    return arr1
 }
-let asd=[1,2,0,'',3,4]
-console.log(counttruthy(asd));
+let asd=[1,2,0,'',5,0,3,4]
+//console.log(counttruthy(asd).length);
+
+// prop of object
+
+function showprop(ZXC){
+    let acd=Object.values(ZXC)
+    for(let index of acd){
+        console.log(index);
+    }
+}
+
+let ghj={a:1,b:2,c:3,d:4}
+// console.log(showprop(ghj));
+
+//multiles of 3 & 5 showing the as string
+
+function multiples(limit,array){
+    let outputarr=[];
+    for(let index of array){
+        outputarr.push(Math.floor(limit/index));
+    }
+
+    return outputarr.join('');
+}
+// console.log(multiples(10,[3,5]));
+
+
+function multiples2(limit,array)
+{
+    let count=0;
+    for(let index of array)
+    {
+        let dfg=Math.floor(limit/index);
+        let jkl=index*dfg;
+       count+=jkl;
+       
+        for(dfg>0;dfg--;){
+            count+=dfg*index;
+        }
+    }
+    return count;
+}
+console.log(multiples2(10,[4,5,3,2]));
