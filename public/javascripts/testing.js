@@ -194,7 +194,7 @@ function multiples(limit,array){
 }
 // console.log(multiples(10,[3,5]));
 
-
+//gives addition of numbers check console.log
 function multiples2(limit,array)
 {
     let count=0;
@@ -210,4 +210,39 @@ function multiples2(limit,array)
     }
     return count;
 }
-console.log(multiples2(10,[4,5,3,2]));
+// console.log(multiples2(10,[4,5,3,2]));
+
+
+function grades(item)
+{
+    let count=0;
+  item.forEach(element => {
+        count+=element;
+        
+    });
+    let grade;
+    let avg=count/item.length;
+    if(avg<=59) grade="F";
+    if(avg>59) grade="A";
+    return grade;
+}
+let student=[80,80,80,80]
+// console.log(grades(student));
+
+//stars
+function stars(item)
+{
+    
+    for(let i=1;i<=item;i++){
+        let pattern='';
+        for(j=0;j<i;j++)
+        pattern+="*";
+        console.log(pattern);
+    
+    }
+    
+}
+
+//stars(10);
+
+
