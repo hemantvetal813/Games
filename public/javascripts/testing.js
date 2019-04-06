@@ -33,6 +33,19 @@ var person={
 person.fullname='Dinesh Vetal';
 //console.log(person);
 
+// Using the get operator
+var o = { get gimmeFive() { return 5; } };
+//console.log(o.gimmeFive); // 5
+
+// Using Object.defineProperty
+var o = {};
+Object.defineProperty(o, 'gimmeFive', {
+  get: function() {
+    return 5;
+  }
+});
+// console.log(o.gimmeFive); // 5
+
 //async await e.g.
 
 startTime = performance.now();  //Run at the beginning of the code
@@ -245,4 +258,56 @@ function stars(item)
 
 //stars(10);
 
+function prime(limit){
+    
+    for (let i=2;i<=limit;i++){
+        let op=true;
+        for(let j=2;j<i;j++){
+            if(i % j===0) {
+                op=false;
+                break;
+            }
+        }
+            if(op){
+            console.log(i)};
+    }
+}
+// prime(200)
+
+
+//apply call methods
+function circle(rad,vad){
+    return{
+        rad:rad,
+        vad:vad
+    }
+}
+
+const varri=circle.apply({},[1,2]);
+
+// console.log(varri);
+const varri1=circle.call({},1,2);
+
+
+//factory function
+function address(street,city,pincode) {
+    return{
+        street,
+        city,
+        pincode
+    }
+};
+
+let add1= address('kopar','dombivli','421202');
+
+//constructor function
+function Address1(street,city,pincode) {
+    
+        this.street=street,
+        this.city=city,
+        this.pincode=pincode
+    }
+;
+
+let add2= new Address1('kopar','dombivli','421202');
 
