@@ -311,3 +311,175 @@ function Address1(street,city,pincode) {
 
 let add2= new Address1('kopar','dombivli','421202');
 
+//how to use includes,splice for object, array, strings
+
+const courses=[
+    {id:1,name:"hemant"},
+    {id:2,name:"vetal"}
+]
+
+// console.log(Object.values(ghj).includes(1)); //or
+var kll=courses.find(function (element){
+    return element.name==="hemant" ;
+});
+// console.log(kll);
+let extra="Bhagwan";
+let extra1=[1,2,3,4,1];
+// console.log(extra.includes("Bhagwan"));
+// console.log(extra1.includes(3));
+
+// console.log(extra1.splice(1,0,"A","a"));
+// console.log(extra1)
+
+var message="My name is hemant vetal";
+var combined=message.split(" ")//convert string to array
+                    .join("-");//convert array to string 
+
+// console.log(combined);
+
+
+// making of an array with two numbers
+
+// if else executes both if's so solution is case switch
+function makearray(min=0,max=0) {
+    let arr=[];
+    if(min<=max){
+    for(min;min<=max;min++) {
+        arr.push(min);
+    }
+    }
+    if(min>max){
+        for(max;min>=max;max++) {
+            arr.push(max);
+        }
+    }
+    return arr;
+}
+
+function makearray1(min=0,max=0) {
+    let arr=[];
+    let role;
+    if(min<=max){role="min"}
+    else{role="max"};
+    switch (role){
+        case "min":
+    for(min;min<=max;min++) {
+        arr.push(min);
+
+    }
+    break;
+    case "max":
+        for(max;min>=max;max++) {
+            arr.push(max);
+        }
+    break;
+    }    
+    return arr;
+}
+// console.log(makearray(-9,0));
+// console.log(makearray1(-9,0));
+
+//finds if element is in array like includes in built string object prop
+function includes1(array,search) {
+   for(let element of array)
+   if(element === search)
+           return true;
+       }
+
+// console.log(includes1(extra1,1));
+
+//except deletes numbers from array
+
+function except(array1,array2) {
+    let arr1=[];
+    let foo;
+    for( let element2 of array1) {
+        foo=true;
+        for(let element1 of array2 ) {
+            if(element1=== element2){
+            foo=false;
+            break;}
+        }
+        if(foo==true) 
+        {arr1.push(element2);}
+    }
+    return arr1;
+}
+
+//shorter and cleaner
+function except2(array1,array2) {
+    const op=[];
+    for(let element of array1)
+    if(!array2.includes(element))
+    op.push(element);
+    return op;
+}
+
+// console.log(except2(extra1,[1,2]));
+
+//move array items
+function arraymove(array,index,offset) {
+    let arr22=[...array];//cloning so original remians the same
+    //validation
+    if(index+offset >=arr22.length || index+offset <0){
+        return console.error("wrong")
+    }
+    //saving output in other array to use again so we cant use chaining
+let arr3=arr22.splice(index,1);
+arr22.splice((index+offset),0,arr3[0]);
+return arr22;
+}
+
+let fghj=[1,2,3,4,5,4,4];
+// console.log(arraymove(fghj,4,-4))
+
+//count occurences
+
+function countoccurences(array,item) {
+    arr33=[...array];
+
+    //normal
+    let count=0;
+    for(let i of array) {
+        let j=(i===item)?1:0;
+         count+=j;
+    }
+    return count;
+
+    //reduce method
+    // let goodone=arr33.reduce((accumulator,current)=>{
+        
+    //     if(current==item) accumulator++
+    //     return accumulator;
+    // },0)
+    // return goodone;
+
+    //filter method
+    // let goodone=arr33.filter(element =>{
+    //     if(element==item) return item
+    // })
+    // return goodone.length;
+}
+
+// console.log(countoccurences(fghj,4))
+
+//movies sorting 
+
+let movies=[
+    {title:"a",year:2018,rating:4.7},
+    {title:"b",year:2018,rating:4.5},
+    {title:"c",year:2018,rating:3},
+    {title:"d",year:2017,rating:4.5},
+    {title:"e",year:2018,rating:4.8},
+];
+
+let yearfilter=2018;
+let ratingfilter=4.5;
+
+function moviesorter(obj,item,index) {
+   return obj.sort(function(a, b){return b.year-a.year|| b.rating -a.rating})
+             .filter(function(n){return n.year===item && n.rating>=index})
+             .map(m => m.title);
+               
+}
+// console.log(moviesorter(movies,yearfilter,ratingfilter));
