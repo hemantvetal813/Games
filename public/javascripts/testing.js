@@ -226,13 +226,16 @@ function multiples2(limit,array)
 // console.log(multiples2(10,[4,5,3,2]));
 
 
-function grades(item)
+function grades(...item)//IT PUTS ALL ARGUMENTS IN ARRAY AND IF IT IS AN ARRAY IT PUTS IT IN A ARRAY
 {
-    let count=0;
-  item.forEach(element => {
-        count+=element;
-        
-    });
+
+    if(Array.isArray(item) && item.length===1){
+
+        item=[...item[0]];
+    }
+
+    let count= item.reduce((a,b) => a+b);
+
     let grade;
     let avg=count/item.length;
     if(avg<=59) grade="F";
@@ -240,7 +243,7 @@ function grades(item)
     return grade;
 }
 let student=[80,80,80,80]
-// console.log(grades(student));
+// console.log(grades(80,80,80,80));
 
 //stars
 function stars(item)
@@ -436,16 +439,25 @@ let fghj=[1,2,3,4,5,4,4];
 //count occurences
 
 function countoccurences(array,item) {
-    arr33=[...array];
+    //cloning to avoid changing the main array
 
     //normal
+    if(!Array.isArray(array))
+    throw new Error(' Enter a array')
+
+
+    try{
+        arr33=[...array];
     let count=0;
     for(let i of array) {
         let j=(i===item)?1:0;
          count+=j;
     }
     return count;
-
+    }
+    catch(e){
+        console.log(e);
+    }
     //reduce method
     // let goodone=arr33.reduce((accumulator,current)=>{
         
@@ -461,7 +473,7 @@ function countoccurences(array,item) {
     // return goodone.length;
 }
 
-// console.log(countoccurences(fghj,4))
+console.log(countoccurences(1,4))
 
 //movies sorting 
 
