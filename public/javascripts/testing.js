@@ -97,6 +97,40 @@ function Stopwatch() {
     })
 }
 
+function Stopwatch1() {
+    let starttime,running,stoptime,duration,reset=0;
+    
+    Object.defineProperty(this,'duration',{
+        get:function() {return duration}
+    })
+}
+Stopwatch1.prototype.start=function(){
+    if(this.running)
+        throw new Error('stopwatch already running');
+
+        this.running=true;
+        this.starttime= new Date();
+}
+Stopwatch1.prototype.reset=function(){
+    this.duration=0;
+    this.starttime=null;
+    this.stoptime=null;
+    this.running=false
+}
+Stopwatch1.prototype.stop=function(){
+    if(!this.running)
+        throw new Error('stopwatch already stopped');
+
+        this.running=false;
+        this.stoptime= new Date();
+
+        const seconds= (this.stoptime.getTime()-this.starttime.getTime())/1000;
+        this.duration=seconds;//here we cant set new value to duration as it is only getter.
+        //the soln is to add a setter in duration defineproperty
+        //but this creates a problem that we can again define that value so 
+        //creating a prototype property for memory optimization is a bad idea.
+}
+
 //check  https://www.youtube.com/watch?v=PFmuCDHHpwk 55:00
 //define property and how to change value of location 
 
@@ -473,7 +507,7 @@ function countoccurences(array,item) {
     // return goodone.length;
 }
 
-console.log(countoccurences(1,4))
+// console.log(countoccurences(fghj,4))
 
 //movies sorting 
 
@@ -495,3 +529,37 @@ function moviesorter(obj,item,index) {
                
 }
 // console.log(moviesorter(movies,yearfilter,ratingfilter));
+
+
+//test: prototypical Inheritance
+
+function Htmlelement(){
+    this.click=function(){
+        console.log('click');
+    }
+};
+Htmlelement.prototype.focus=function(){
+    console.log('focus');
+}
+
+function Selecthtmlelement(array=[],click) {
+    Htmlelement.call(this,click);
+    this.array=array;
+    this.additem=function (item) {
+        this.array.push(item);
+    }
+    this.removeitem= function(item){
+        this.array.splice(this.array.indexOf(item),1);
+    }
+    
+}
+
+
+Selecthtmlelement.prototype=Object.create(Htmlelement.prototype);//for copying prototype prop.
+Selecthtmlelement.prototype=new Htmlelement();//for copying prototype & instance prop.and advantage is you can remove call method in function
+
+Selecthtmlelement.prototype.constructor=Selecthtmlelement;
+
+
+let h= new Htmlelement;
+let s= new Selecthtmlelement;
