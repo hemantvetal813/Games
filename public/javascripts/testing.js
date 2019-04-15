@@ -537,6 +537,9 @@ function Htmlelement(){
     this.click=function(){
         console.log('click');
     }
+    this.render=function(){
+        console.log('hemant b vetal');
+    }
 };
 Htmlelement.prototype.focus=function(){
     console.log('focus');
@@ -563,3 +566,95 @@ Selecthtmlelement.prototype.constructor=Selecthtmlelement;
 
 let h= new Htmlelement;
 let s= new Selecthtmlelement;
+
+function Imghtmlelement(src) {
+
+    this.render=function() {
+        console.log(this.src);
+       }
+Object.defineProperty(this,"src",{
+    get: function(){
+        return src;
+      }
+    //   ,set: function(value){       
+    //     src=value;
+    //   }
+})
+}
+Imghtmlelement.prototype=new Htmlelement();
+Imghtmlelement.prototype.constructor=Imghtmlelement;
+
+
+
+let d=new Imghtmlelement("dinesh b vetal");
+
+
+//class STACK getters & setters in classes ES6
+
+const _items= new WeakMap();
+
+class Stack {
+    constructor() {//define variables in constructor
+        _items.set(this,[]);
+    }
+
+    push(obj) {
+        const items=_items.get(this);
+
+        items.push(obj);
+    }
+
+    pop() {
+        const items=_items.get(this);
+
+        if(items.length===0) throw new Error('Stack empty');
+        items.pop();
+    }
+
+    peek() {
+        const items=_items.get(this);
+
+        if(items.length===0) throw new Error('Stack empty');
+
+        return items[items.length-1];//to see the last element added
+    }
+
+    get count() {
+        const items=_items.get(this);
+        return items.length;
+    }
+
+}
+
+const he=new Stack;
+
+//same with function
+
+function Stackfn() {
+     let array=[];
+    this.push= (obj) => {
+         this.array.push(obj);
+     }
+
+     this.pop= ()=> {
+        if(this.array.length===0) throw new Error('Stack empty');
+         this.array.pop();
+     }
+
+     this.peek= () => {
+        if(this.array.length===0) throw new Error('Stack empty');
+         return this.array[this.array.length-1];
+     }
+
+     Object.defineProperty(this,"array",{
+         get:function(){
+             return array;
+         },
+         
+     })
+     this.count=() => {
+         return this.array.length;
+     }
+}
+
+let ge= new Stackfn;
