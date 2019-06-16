@@ -41,6 +41,7 @@ function getRndColor() {
 var maxradius=60;
 var minradius=2;
 var vicinity=50;
+// canvas.style.background = red;
 function Circle(x,y,dx,dy,radius){
     this.x=x;
     this.y=y;
@@ -48,7 +49,8 @@ function Circle(x,y,dx,dy,radius){
     this.dy=dy;
     this.radius=radius;
     this.colour=getRndColor();
-    // c.globalAlpha=Math.random();
+    c.globalAlpha=1;//0~1
+    
 
     this.draw = function(){
             c.beginPath();

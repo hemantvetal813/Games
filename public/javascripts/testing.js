@@ -1,5 +1,9 @@
+// const _=require('../../node_modules/lodash');
+// const os = require('os');
 
+// var _ = require("lodash");
 
+// var _= document.querySelector('');
 var arr=[0,-1,2,3,1]
 
 //filter
@@ -48,7 +52,7 @@ Object.defineProperty(o, 'gimmeFive', {
 
 //async await e.g.
 
-startTime = performance.now();  //Run at the beginning of the code
+// startTime = performance.now();  //Run at the beginning of the code
 function executingAt() {
   return (performance.now() - startTime) / 1000;
 }
@@ -142,7 +146,7 @@ function Circle(){
         return location;
       },set: function(value){
         if(!x.value || !y.value)
-            throw new Error('erroe')        
+            throw new Error('error');
         location=value;
       }
     } )
@@ -368,7 +372,7 @@ let extra1=[1,2,3,4,1];
 // console.log(extra1.splice(1,0,"A","a"));
 // console.log(extra1)
 
-var message="My name is hemant vetal";
+var message="My name is hemant vetal";//this is done to make url
 var combined=message.split(" ")//convert string to array
                     .join("-");//convert array to string 
 
@@ -658,3 +662,148 @@ function Stackfn() {
 }
 
 let ge= new Stackfn;
+
+function factorial(foo) {
+    var bar= foo;
+    while(bar>2) {
+        foo=foo*(bar-1);
+        bar--;
+    }
+    return foo;
+}
+
+//cricket world  cup schedule
+const teams="  Ind Aus Ban Pak SL NZ WI RSA Afg Eng  "
+// const teams="  Ind Aus Ban Pak RSA "
+const teamArray=teams.trim().split(" ");
+
+
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  }
+
+  //array of two unique numbers
+ function createTwoNos(min, max) {
+    let number1= getRandomInt(min, max),number2;
+    let twoNos= [];
+    twoNos.push(number1);
+    for( number2;number2!=number1;){
+        number2=getRandomInt(min, max);
+        if(number1!==number2){
+             twoNos.push(number2);
+                return twoNos; 
+        }
+        else{number2=number1-1} //something is getting undefined here so I repeat that iteration which gets failed
+    }
+}
+
+
+let matcharray=[];
+    for (let i = 0; i < teamArray.length; i++) {
+        let team1=teamArray[i];
+            for(let j=0;j<i;j++)
+            {
+                let team2=teamArray[j];
+                matcharray.push(team1,team2);
+            }
+        }
+ 
+
+
+// console.log(matcharray);
+
+function pythaTriplet() {
+    let pytha = document.getElementById("pytha").value;
+    let pythagorean=[];
+    for(let i=pytha/2;i>0;i--) {
+        for(let j=1;j<(pytha-1-i);j++) {
+                let k=(pytha-i-j);
+                // console.log([i,j,k]);
+                    if( i**2 === j**2 +k**2) {
+                        pythagorean=[i,j,k];
+                        break;
+                    }
+                    else continue;
+        }
+        if(pythagorean[0]) break;
+}
+if(pythagorean[0]) pythaOutput.innerHTML=pythagorean;
+else pythaOutput.innerHTML="number is not a pythagorean triplet";
+}
+
+
+//tocheck unique values in array input
+function hasDuplicates(array) {
+    var valuesSoFar = Object.create(null);
+    for (var i = 0; i < array.length; ++i) {
+        var value = array[i];
+        if (value in valuesSoFar) {
+            return true;
+        }
+        valuesSoFar[value] = true;
+    }
+    return false;
+}
+
+
+
+//there should be nine arrays WITH LENGTH 9
+// if(sudoku.forEach((element) => element.length!==9) ) console.log("input not valid");
+
+function SudokuChecker(sudoku) {
+    let sudokueachArray=true;
+    for(value of sudoku) {
+        if(value.length!==9){
+            sudokueachArray=false;
+        }
+    }
+    if(sudoku.length!==9 || sudoku.forEach((item) => Array.isArray(item)) || !sudokueachArray)console.log("input not valid");
+    let newsudoku=[[],[],[],[],[],[],[],[],[]];//...sudoku
+    let check= true;
+    sudoku.forEach((item) => {
+        if(hasDuplicates(item)) {
+            check=false;
+            // break;
+        }//return console.log("Not a Sudoku");
+        item.forEach((element) => {
+            if(typeof element !== "number") {
+                return console.log("input not valid") ;
+               } 
+        });
+    
+    });
+    if(check==false) return console.log("Not a Sudoku");   
+    for(let i=0;i<9;i++) {
+        let tempsudoku=sudoku[i];
+        for(let j=0;j<9;j++) {
+            newsudoku[j].push(tempsudoku[j]);
+        }
+    }
+    let result1 = newsudoku.forEach((item) => {
+        if(hasDuplicates(item)) {
+            check=false;
+        }
+        
+    });
+    if(check==false) return console.log("Not a Sudoku"); 
+    else return console.log("Sudoku");
+}
+
+let checkMySudoku=[
+    [1,2,3,4,6,6,7,8,9],
+    [4,5,6,7,8,9,1,2,3],
+    [7,8,9,1,2,3,4,5,6],
+    [2,3,4,5,6,7,8,9,1],
+    [5,6,7,8,9,1,2,3,4],
+    [8,9,1,2,3,4,5,6,7],
+    [3,4,5,6,7,8,9,1,2],
+    [6,7,8,9,1,2,3,4,5],
+    [9,1,2,3,4,5,6,7,8]
+];
+
+// SudokuChecker(checkMySudoku);
+
+
