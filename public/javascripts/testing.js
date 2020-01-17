@@ -263,6 +263,21 @@ function multiples2(limit,array)
 }
 // console.log(multiples2(10,[4,5,3,2]));
 
+//simple soln for multiples2 of 10,[3,5]
+function multiples3(limit)
+{
+    let count=0;
+    //faster increementation but not generic soln
+    let addArray=[3,2,1,3,1,2,3]
+  let j=-1
+    for(let i=0;i<limit;i+=addArray[j]){
+        if(i%3==0||i%5==0) count+=i
+        j+=1;
+        if(j>=addArray.length)j=0
+    }
+    
+    return count;
+}
 
 function grades(...item)//IT PUTS ALL ARGUMENTS IN ARRAY AND IF IT IS AN ARRAY IT PUTS IT IN A ARRAY
 {
