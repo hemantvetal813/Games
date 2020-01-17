@@ -9,6 +9,7 @@ var jwt = require('jsonwebtoken');
 
 var morgan = require('morgan');
 const fs = require('fs');
+const testing = require('./testing');
 
 // (new Date()).toISOString().replace(new RegExp(":","g"),"_")
 
@@ -25,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('morgan')('short'));
+app.use("/test",testing)
 var Matr = [[1, 2, 3, 4],
 [5, 6, 7, 8],
 [9, 10, 11, 12],
@@ -130,16 +132,19 @@ function solve(equations) {
   let result = []
   let prevMat = []
   let newMat = []
-
+//if matrix is empty after slicing it then returning
   if (getOuterEleArray(equations).length == 0) return result;
+
   result = result.concat(getOuterEleArray(equations));
 
   prevMat = equations
+
   for (let i = 2; i < matNo; i++) {
     newMat = deleteOuterEleArray(prevMat);
     result = result.concat(getOuterEleArray(newMat))
     prevMat = newMat
   }
+
   return result
 }
 
@@ -169,9 +174,19 @@ function getOuterEleArray(equations) {
     i--
   }
   return resultArray
-
 }
-
-solve([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-solve([[1]])
+function prime(limit){
+    
+  for (let i=2;i<=limit;i++){
+      let op=true;
+      for(let j=2;j<i;j++){
+          if(i % j===0) {
+              op=false;
+              break;
+          }
+      }
+          if(op){
+          console.log(i)};
+  }
+}
 module.exports = app;
