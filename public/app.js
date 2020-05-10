@@ -13,6 +13,8 @@ const testing = require('./testing');
 
 // (new Date()).toISOString().replace(new RegExp(":","g"),"_")
 
+
+
 var app = express();
 
 // view engine setup
@@ -46,7 +48,7 @@ app.use('/solve', (req, res) => {
   res.json(result)
 });
 
-let scanDir = path.join(__dirname, "public1")
+let scanDir = path.join(__dirname, "public")
 app.use('/files', async (req, res) => {
 
   const files = await getAllFiles(scanDir)

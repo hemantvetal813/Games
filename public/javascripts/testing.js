@@ -821,4 +821,64 @@ let checkMySudoku=[
 
 // SudokuChecker(checkMySudoku);
 
+function pythagoreanTriple (num) {
+    let num2=num;
+    while (true) {
+        num2++;
+        let num3=Math.sqrt(num2**2 + num**2) 
+        if(num3 % 1 ==0){
+            return [num,num2,num3]
+        }
+    }
+}
+// console.log(pythagoreanTriple(5));
+function climbingLeaderboard(scores, alice) {
+    let output=[];
+    for (let i = 0; i < alice.length; i++) {
+        const score = alice[i];
+        let sortedArray=[...scores,score].sort((a,b)=>b-a);
+        let uniqueArray=[...new Set(sortedArray)];
+        let scoreIndex= uniqueArray.indexOf(score);
+        output.push(scoreIndex + 1)
+        
+    }
+    return output
+}
+// console.log(climbingLeaderboard([100,90,90,80,75,60],[50,65,77,90,102]));
 
+function isValidString(s) {
+    let output=[]
+    let output1=[]
+    let output2=[]
+    let alphabets=s.split("");
+    let uniqueElements=[...new Set(alphabets)];
+    for (let i = 0; i < uniqueElements.length; i++) {
+        const alpha = uniqueElements[i];
+        let count= alphabets.filter(item => item == alpha).length;
+        output1.push(count)
+        if(!output2.includes(count)) {
+            output2.push(count)
+            if(output2.length >3) return "NO"
+        }
+    }
+    console.log(output2);
+    if(output2.length ==1) return "YES";
+
+    // if(Math.abs(output2[1]-output2[0]) !=1 ) return "NO";
+    let maxValue=Math.max(...output2);
+    let minValue=Math.min(...output2);
+
+    if(output2.length ==2){
+        if(minValue==1 && output1.filter(item => item == minValue).length==1) return "YES";
+        if(output1.filter(item => item == maxValue).length>1) return "NO" 
+        else return "YES"
+    }
+
+    return minValue==1 ?  "YES" :  "NO"
+
+
+}
+//  console.log(isValidString('aaaabbcc'))
+
+//creates array [1,2,3,4,5]
+// Array.from({length: 5}, (v, i) => i+1);
