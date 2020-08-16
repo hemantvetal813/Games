@@ -882,3 +882,18 @@ function isValidString(s) {
 
 //creates array [1,2,3,4,5]
 // Array.from({length: 5}, (v, i) => i+1);
+
+const getFixedCounters = function counter(k) {
+  let value = 0;
+  return {
+    getVal: function() {
+      return value;
+    },
+    incre: ()=> {
+      value += k;
+    },
+    decre: ()=> {
+      value -= k;
+    },
+  }
+};
