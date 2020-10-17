@@ -29,6 +29,95 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(require('morgan')('short'));
 app.use("/test",testing)
+
+
+//mergeSort
+//it splits the array in single element array and sorts like this tree diagram
+//   *(length=6)
+// ******
+//  ***
+//  **
+//  *
+function mergeSort(arr) {
+    if(arr.length <= 1) return arr;
+    let rLen = arr.length
+    let res= []   
+    for(let i=0;i<rLen;i+=2){
+        if(arr[i] && arr[i+1]){
+            if(typeof arr[i] == "number") arr[i] = [arr[i]]
+            if(typeof arr[i+1] == "number") arr[i+1] = [arr[i+1]]
+            let op= merge(arr[i],arr[i+1])
+            res.push(op)
+        }else{
+            res.push(arr[i])
+        }
+    }
+    return mergeSort(res)
+}
+
+// mergeSort([52,32,2,324,45,1,2,3,4])
+mergeSort(createArray(500,1000))
+
+//this function takes only two sorted arrays.
+// it returns concatenated single sorted array
+function merge(arr1,arr2) {
+    let result =[];
+    let len1 =arr1.length
+    let len2 =arr2.length
+    let j = 0
+    let i = 0
+    while(i < len1 || j < len2){
+        if(arr1[i] && arr2[j]){
+            if(arr1[i] < arr2[j]){
+                result.push(arr1[i])
+                i+=1
+            } else{
+                result.push(arr2[j])
+                j+=1
+            }
+        }else{
+           if(arr1[i]){
+                result.push(arr1[i])
+                i+=1
+           } 
+           if(arr2[j]){
+                result.push(arr2[j])
+                j+=1
+           } 
+
+        }
+        
+    }
+    return result
+}
+
+// merge(  [25,100,200,500,600,700],[30,35,40,45,46,47] )
+
+function createArray(no_of_values,scale=10){
+    return new Array(no_of_values).fill(null).map(i=>Math.round(Math.random()*scale))
+}
+
+
+//it sorts forward, while inserting upcoming element in required position behind it 
+function insertionSort(arr) {
+    console.log(arr)
+    for(let i=1;i<=arr.length;i++){
+        let lowest = i;
+        for(let j=i-1;j>=0;j--){
+            if(arr[lowest]>arr[j]){
+                let temp =arr[j];
+                arr[j] = arr[lowest];
+                arr[lowest]=temp
+            }
+            lowest -=1
+        }
+    }
+    return arr
+}
+
+insertionSort([5,1,2,3,4,32,2,324,45,1,2,3,68,32,12,3])
+
+
 var Matr = [[1, 2, 3, 4],
 [5, 6, 7, 8],
 [9, 10, 11, 12],
