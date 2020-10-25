@@ -97,6 +97,43 @@ function createArray(no_of_values,scale=10){
     return new Array(no_of_values).fill(null).map(i=>Math.round(Math.random()*scale))
 }
 
+//BINary search tree creation
+function Node(value){
+    this.value=value;
+    this.left=null;
+    this.right=null;
+}
+
+function BST(){
+    this.root=null;
+    return this
+}
+
+function getBST(arr){
+    let tree = new BST();
+    if(!arr.length)return tree
+    arr.forEach(el => {
+        if(!tree.root) tree.root = new Node(el)
+        else{
+            let value= tree.root.value
+            let key = el <= value ? 'left' : 'right';
+            createNodes(tree.root,el,key)
+        } 
+    })
+    return tree
+}
+
+function createNodes(node,el,direct){
+    if(!node[direct]) node[direct] = new Node(el)
+    else{
+     let value= node[direct].value
+     let key = el <= value ? 'left' : 'right';
+     createNodes(node[direct],el,key)  
+    }
+
+}
+getBST(createArray(10,100))
+//BINary search tree creation
 
 //it sorts forward, while inserting upcoming element in required position behind it 
 function insertionSort(arr) {
@@ -116,6 +153,7 @@ function insertionSort(arr) {
 }
 
 insertionSort([5,1,2,3,4,32,2,324,45,1,2,3,68,32,12,3])
+
 
 
 var Matr = [[1, 2, 3, 4],
