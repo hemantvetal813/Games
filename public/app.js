@@ -109,8 +109,7 @@ function BST(){
     return this
 }
 
-function getBST(arr){
-    let tree = new BST();
+function getBST(arr,tree= new BST()){
     if(!arr.length)return tree
     arr.forEach(el => {
         if(!tree.root) tree.root = new Node(el)
@@ -132,8 +131,54 @@ function createNodes(node,el,direct){
     }
 
 }
-getBST(createArray(10,100))
+// let newTree = getBST(createArray(10,100))
+// console.log(newTree)
+// getBST([50],newTree)
 //BINary search tree creation
+
+//binary tree search function
+function findNode(search,tree=new BST()){
+    if(!tree.root || !tree.root.value) return false;
+    let rootValue= tree.root.value
+    if(rootValue == search) return true
+    else{
+        let key = search < rootValue ? 'left' : 'right';
+        if(!tree.root[key]) return false
+        else return checkNode(search,tree.root[key])
+    }
+
+}
+
+
+function checkNode(search,node){
+    if(node.value == search) return newTree
+    else{
+        let key = search < node.value ? 'left' : 'right';
+        if(!node[key]) return false
+        else return checkNode(search,node[key])   
+    }
+}
+
+// findNode(10,newTree)
+// console.log(newTree)
+
+//breadth first search
+function BFS(tree=new BST()){
+    if(!tree.root || !tree.root.value) return [];
+    let queue = [tree.root];
+    let traversed = []
+    for(let i=0;;i++){
+        let node=queue[i];
+        if(!node) break;
+        if(node.left) queue.push(node.left)
+        if(node.right) queue.push(node.right)
+        traversed.push(node.value)
+    }
+    console.log(tree)
+    return traversed
+}
+
+// BFS(newTree)
 
 //it sorts forward, while inserting upcoming element in required position behind it 
 function insertionSort(arr) {
