@@ -180,6 +180,23 @@ function BFS(tree=new BST()){
 
 // BFS(newTree)
 
+function DFS(tree=new BST()){
+    if(!tree.root || !tree.root.value) return [];
+    let traversed = []
+    function traverse(node){
+            traversed.push(node.value) //preorder
+        if(node.left) traverse(node.left)
+//         traversed.push(node.value)// in order
+        if(node.right) traverse(node.right)
+//         traversed.push(node.value)// post order
+    }
+    traverse(tree.root)
+    console.log(tree)
+    return traversed
+}
+
+// DFS(newTree)
+
 //it sorts forward, while inserting upcoming element in required position behind it 
 function insertionSort(arr) {
     console.log(arr)
