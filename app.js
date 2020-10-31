@@ -22,7 +22,7 @@ app.use(knexLogger(knex1));
 cron.schedule("35 11 * * * *", function() {
   console.log("running a task every minute");
 });
-knex1('master_lob')
+knex1('kl')
   .then(api_tokens => {
     for(let token of api_tokens){
       // let parameters = {};
@@ -33,7 +33,7 @@ knex1('master_lob')
       // });
       //  console.log(token);
        delete token.id
-       knex2('master_lob').insert(token).then(result => console.log(result))
+       knex2('kl').insert(token).then(result => console.log(result))
     }
   });
 // view engine setup
