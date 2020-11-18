@@ -151,7 +151,7 @@ function findNode(search,tree=new BST()){
 
 
 function checkNode(search,node){
-    if(node.value == search) return newTree
+    if(node.value == search) return true
     else{
         let key = search < node.value ? 'left' : 'right';
         if(!node[key]) return false
@@ -220,7 +220,7 @@ function createMaxHeapOrInsert(arr,res=[]){
     return res
 }
 
-createMaxHeap([91],[100,90,80,70,60,50,40,30,20,1])
+createMaxHeapOrInsert([91],[100,90,80,70,60,50,40,30,20,1])
 
 //it sorts forward, while inserting upcoming element in required position behind it 
 function insertionSort(arr) {
