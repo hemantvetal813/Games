@@ -197,6 +197,31 @@ function DFS(tree=new BST()){
 
 // DFS(newTree)
 
+// **maxBInaryHeap**
+//only one rule, upper node should be greater than below two nodes
+// add element in last and bubble up to its right place
+//to find childs: 2*index + 1 and 2*index + 2
+// to find parent: Math.floor((index - 1)/2)
+function createMaxHeapOrInsert(arr,res=[]){
+    if(!arr.length)return []
+    arr.forEach((el,i) => {
+        res.push(el);
+        let index = res.length-1;
+        let checkIndex = Math.floor((index - 1)/2);
+        while(index!=0 && res[index]>res[checkIndex]){
+                let temp =res[checkIndex];
+                res[checkIndex] = res[index];
+                res[index]=temp;
+
+                index = checkIndex;
+                checkIndex = Math.floor((index - 1)/2);
+        }
+    })
+    return res
+}
+
+createMaxHeap([91],[100,90,80,70,60,50,40,30,20,1])
+
 //it sorts forward, while inserting upcoming element in required position behind it 
 function insertionSort(arr) {
     console.log(arr)
