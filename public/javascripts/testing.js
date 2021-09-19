@@ -78,7 +78,7 @@ function Stopwatch() {
 
         running=true;
         starttime= new Date();
-        
+
     }
     this.stop= function(){
         if(!running)
@@ -103,7 +103,7 @@ function Stopwatch() {
 
 function Stopwatch1() {
     let starttime,running,stoptime,duration,reset=0;
-    
+
     Object.defineProperty(this,'duration',{
         get:function() {return duration}
     })
@@ -131,12 +131,12 @@ Stopwatch1.prototype.stop=function(){
         const seconds= (this.stoptime.getTime()-this.starttime.getTime())/1000;
         this.duration=seconds;//here we cant set new value to duration as it is only getter.
         //the soln is to add a setter in duration defineproperty
-        //but this creates a problem that we can again define that value so 
+        //but this creates a problem that we can again define that value so
         //creating a prototype property for memory optimization is a bad idea.
 }
 
 //check  https://www.youtube.com/watch?v=PFmuCDHHpwk 55:00
-//define property and how to change value of location 
+//define property and how to change value of location
 
 function Circle(){
     this.radius=10;
@@ -212,7 +212,7 @@ function showNumbers(number) {
 //count truthy values
 function counttruthy(array){
     // filter doesnt change the main array.
-    
+
     let arr1=array.filter(item =>{
         if(item){return item}
     })
@@ -254,7 +254,7 @@ function multiples2(limit,array)
         let dfg=Math.floor(limit/index);
         let jkl=index*dfg;
        count+=jkl;
-       
+
         for(dfg>0;dfg--;){
             count+=dfg*index;
         }
@@ -275,7 +275,7 @@ function multiples3(limit)
         j+=1;
         if(j>=addArray.length)j=0
     }
-    
+
     return count;
 }
 
@@ -301,21 +301,21 @@ let student=[80,80,80,80]
 //stars
 function stars(item)
 {
-    
+
     for(let i=1;i<=item;i++){
         let pattern='';
         for(j=0;j<i;j++)
         pattern+="*";
         console.log(pattern);
-    
+
     }
-    
+
 }
 
 //stars(10);
 
 function prime(limit){
-    
+
     for (let i=2;i<=limit;i++){
         let op=true;
         for(let j=2;j<i;j++){
@@ -358,7 +358,7 @@ let add1= address('kopar','dombivli','421202');
 
 //constructor function
 function Address1(street,city,pincode) {
-    
+
         this.street=street,
         this.city=city,
         this.pincode=pincode
@@ -389,7 +389,7 @@ let extra1=[1,2,3,4,1];
 
 var message="My name is hemant vetal";//this is done to make url
 var combined=message.split(" ")//convert string to array
-                    .join("-");//convert array to string 
+                    .join("-");//convert array to string
 
 // console.log(combined);
 
@@ -429,7 +429,7 @@ function makearray1(min=0,max=0) {
             arr.push(max);
         }
     break;
-    }    
+    }
     return arr;
 }
 // console.log(makearray(-9,0));
@@ -456,7 +456,7 @@ function except(array1,array2) {
             foo=false;
             break;}
         }
-        if(foo==true) 
+        if(foo==true)
         {arr1.push(element2);}
     }
     return arr1;
@@ -513,7 +513,7 @@ function countoccurences(array,item) {
     }
     //reduce method
     // let goodone=arr33.reduce((accumulator,current)=>{
-        
+
     //     if(current==item) accumulator++
     //     return accumulator;
     // },0)
@@ -528,7 +528,7 @@ function countoccurences(array,item) {
 
 // console.log(countoccurences(fghj,4))
 
-//movies sorting 
+//movies sorting
 
 let movies=[
     {title:"a",year:2018,rating:4.7},
@@ -545,7 +545,7 @@ function moviesorter(obj,item,index) {
    return obj.sort(function(a, b){return b.year-a.year|| b.rating -a.rating})
              .filter(function(n){return n.year===item && n.rating>=index})
              .map(m => m.title);
-               
+
 }
 // console.log(moviesorter(movies,yearfilter,ratingfilter));
 
@@ -573,7 +573,7 @@ function Selecthtmlelement(array=[],click) {
     this.removeitem= function(item){
         this.array.splice(this.array.indexOf(item),1);
     }
-    
+
 }
 
 
@@ -595,7 +595,7 @@ Object.defineProperty(this,"src",{
     get: function(){
         return src;
       }
-    //   ,set: function(value){       
+    //   ,set: function(value){
     //     src=value;
     //   }
 })
@@ -669,7 +669,7 @@ function Stackfn() {
          get:function(){
              return array;
          },
-         
+
      })
      this.count=() => {
          return this.array.length;
@@ -709,7 +709,7 @@ function getRandomInt(min, max) {
         number2=getRandomInt(min, max);
         if(number1!==number2){
              twoNos.push(number2);
-                return twoNos; 
+                return twoNos;
         }
         else{number2=number1-1} //something is getting undefined here so I repeat that iteration which gets failed
     }
@@ -725,7 +725,7 @@ let matcharray=[];
                 matcharray.push(team1,team2);
             }
         }
- 
+
 
 
 // console.log(matcharray);
@@ -786,11 +786,11 @@ function SudokuChecker(sudoku) {
         item.forEach((element) => {
             if(typeof element !== "number") {
                 return console.log("input not valid") ;
-               } 
+               }
         });
-    
+
     });
-    if(check==false) return console.log("Not a Sudoku");   
+    if(check==false) return console.log("Not a Sudoku");
     for(let i=0;i<9;i++) {
         let tempsudoku=sudoku[i];
         for(let j=0;j<9;j++) {
@@ -801,9 +801,9 @@ function SudokuChecker(sudoku) {
         if(hasDuplicates(item)) {
             check=false;
         }
-        
+
     });
-    if(check==false) return console.log("Not a Sudoku"); 
+    if(check==false) return console.log("Not a Sudoku");
     else return console.log("Sudoku");
 }
 
@@ -825,7 +825,7 @@ function pythagoreanTriple (num) {
     let num2=num;
     while (true) {
         num2++;
-        let num3=Math.sqrt(num2**2 + num**2) 
+        let num3=Math.sqrt(num2**2 + num**2)
         if(num3 % 1 ==0){
             return [num,num2,num3]
         }
@@ -840,7 +840,7 @@ function climbingLeaderboard(scores, alice) {
         let uniqueArray=[...new Set(sortedArray)];
         let scoreIndex= uniqueArray.indexOf(score);
         output.push(scoreIndex + 1)
-        
+
     }
     return output
 }
@@ -870,7 +870,7 @@ function isValidString(s) {
 
     if(output2.length ==2){
         if(minValue==1 && output1.filter(item => item == minValue).length==1) return "YES";
-        if(output1.filter(item => item == maxValue).length>1) return "NO" 
+        if(output1.filter(item => item == maxValue).length>1) return "NO"
         else return "YES"
     }
 
