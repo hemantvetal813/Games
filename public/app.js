@@ -31,6 +31,54 @@ app.use(require('morgan')('short'));
 app.use("/test",testing)
 
 
+//railofy interview question, find person require to deliver orders
+let pre_time =1;
+let cod_time = 2;
+
+function rail(pre_order,cod_order,rail_time){
+let orders={
+    prepaid:{},cod:{}
+}
+    let count=Math.ceil(((cod_time*cod_order)+ (pre_time *pre_order))/rail_time);
+    for(let i=1;i<=pre_order;i++){
+        orders.prepaid[i]=true
+    }
+    for(let i=1;i<=cod_order;i++){
+        orders.cod[i]=true
+    }
+console.log(orders)
+    let j=1
+let k=1
+    let go_to_cod=false
+    for(let i=1;i<=count;i++){
+        
+        for(let p=rail_time;p>0;p-=pre_time){
+            if(orders.prepaid[j]){
+                orders.prepaid[j]=i;
+                j++
+            }else {
+                go_to_cod=true
+                break;
+            }
+            
+        }
+        if(go_to_cod){
+            for(let p=rail_time;p>0;p-=cod_time){
+            if(orders.cod[k]){
+                orders.cod[k]=i;
+                k++
+            }else {
+                break;
+            }
+            
+            }
+        }
+        
+    }
+    return orders
+}
+rail(13,2,10)
+
 //mergeSort
 //it splits the array in single element array and sorts like this tree diagram
 //   *(length=6)
