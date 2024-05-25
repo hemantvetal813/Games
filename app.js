@@ -22,9 +22,10 @@ app.use(knexLogger(knex1));
 cron.schedule("35 11 * * * *", function() {
   console.log("running a task every minute");
 });
-knex1('kl')
-  .then(api_tokens => {
-    for(let token of api_tokens){
+try {
+  // knex1('kl')
+  // .then(api_tokens => {
+  //   for(let token of api_tokens){
       // let parameters = {};
       // let values = '';
       // Object.keys(token).forEach((key) => {
@@ -32,10 +33,14 @@ knex1('kl')
       //   parameters[key] = token[key];
       // });
       //  console.log(token);
-       delete token.id
-       knex2('kl').insert(token).then(result => console.log(result))
-    }
-  });
+    //    delete token.id
+    //    knex2('kl').insert(token).then(result => console.log(result))
+    // }
+  // });
+} catch (error) {
+  console.log("knex issue", error);
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
